@@ -1,0 +1,17 @@
+{
+  "name": "pinterest-api",
+  "version": "0.0.0",
+  "description": "API for getting a users pinterest pins",
+  "main": "pinterest-api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Peter Coles",
+  "license": "MIT",
+  "dependencies": {
+    "request": "~2.34.0",
+    "cheerio": "~0.13.1",
+    "underscore": "~1.6.0",
+    "querystring": "~0.2.0"
+  }
+}

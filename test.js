@@ -16,7 +16,7 @@ if (!username) {
             console.log(pin);
         });
 
-        console.log('\nBookmark', data.bookmark);
+        console.log('\nBookmark', data.nextBookmark);
     });
 
     req.on('error', function(err) {

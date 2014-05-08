@@ -1,6 +1,7 @@
 
+var cheerio = require('cheerio');
+
 function getPins(html) {
-    var cheerio = require('cheerio');
     var $ = cheerio.load(html);
     var $pins = $('.pinWrapper');
 
@@ -33,8 +34,6 @@ function getPins(html) {
             image: image,
             description: description
         });
-
-        //console.log(pins[pins.length - 1]); //REM
     });
 
     return pins;
@@ -48,7 +47,6 @@ function extractBookmark(htmlOrCompleteJson) {
         bookmark = sp[1];
     }
 
-    //console.log('bookmark!', bookmark); //REM
     return bookmark;
 }
 

@@ -27,7 +27,8 @@ var EventMap = function EventMap() {
  * ------------------------
  *
  * Asynchronous lookup of the pins for a user from one page, either
- * specified by `bookmark` or default to the first page.
+ * specified by optional argument `bookmark` (defaults to the first page)
+ * and using an optional `headers` argument (in the form of an object).
  *
  * The callback is called as `callback(error, data)`, where data is
  * an object containing:
@@ -36,18 +37,29 @@ var EventMap = function EventMap() {
  * -   nextBookmark: string for next page of pins (or null)
  *
  */
-function getPinsPage(username, bookmark, callback) {
+function getPinsPage(username, bookmark, headers, callback) {
 
     // allow optional bookmark
-    if (typeof callback === 'undefined' && typeof bookmark === 'function') {
-        callback = bookmark;
-        bookmark = null;
+    if (typeof callback === 'undefined') {
+        if (typeof headers === 'function') {
+            callback = headers;
+            headers = null;
+            if (typeof bookmark === 'object') {
+                headers = bookmark;
+                bookmark = null;
+            }
+        } else if (typeof bookmark === 'function') {
+            callback = bookmark;
+            bookmark = headers = null;
+        } else {
+            throw new Error('Invalid arguments, must include a callback');
+        }
     }
 
     if (!bookmark) {
 
         // first page - no bookmark
-        urls.getFirstPage(username, function(error, body) {
+        urls.getFirstPage(username, headers, function(error, body) {
             if (error) {
                 return callback(error);
             }
@@ -64,7 +76,7 @@ function getPinsPage(username, bookmark, callback) {
     } else {
 
         // paginated page - has bookmark
-        urls.getPagination(username, bookmark, function(error, body) {
+        urls.getPagination(username, bookmark, headers, function(error, body) {
             if (error) {
                 return callback(error);
             }
@@ -113,13 +125,13 @@ function getPinsPage(username, bookmark, callback) {
  *
  * They can be listened to via:
  *
- *     var request = requestPins(username);
- *     request.on('data', function(data) { ... });
- *     request.on('error', function(error) { ... });
- *     request.on('end', function(data) { ... });
+ *     var req = requestPins(username);
+ *     req.on('data', function(data) { ... });
+ *     req.on('error', function(error) { ... });
+ *     req.on('end', function(data) { ... });
  *
  */
-function requestPins(username) {
+function requestPins(username, headers) {
 
     var eventMap = new EventMap();
     var first = true;
@@ -131,7 +143,7 @@ function requestPins(username) {
             first = false;
             page += 1;
 
-            getPinsPage(username, bookmark, function(error, data) {
+            getPinsPage(username, bookmark, headers, function(error, data) {
                 var nextBookmark = null;
 
                 if (error) {

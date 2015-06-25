@@ -27,6 +27,7 @@ function getPins(html) {
 
         // description
         var description = $t.find('.pinDescription').text();
+        description = description.replace(/^\s+/, '').replace(/\s+$/, '');
 
         pins.push({
             id: id,

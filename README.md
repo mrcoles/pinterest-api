@@ -18,6 +18,8 @@ You can run a test call from the command-line via:
 node test.js <username>
 ```
 
+It is also available on NPM as [pinterest-pins-grabber](https://www.npmjs.com/package/pinterest-pins-grabber).
+
 ## API Methods
 
 ### PinterestApi.getPinsPage(username[, bookmark][, headers], callback)

@@ -1,7 +1,7 @@
 {
-  "name": "pinterest-api",
-  "version": "0.0.0",
-  "description": "API for getting a users pinterest pins",
+  "name": "pinterest-pins-grabber",
+  "version": "0.0.1",
+  "description": "Unoffocial API for getting a users pinterest pins",
   "main": "pinterest-api.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

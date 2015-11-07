@@ -1,10 +1,10 @@
 
-Pinterest API
-=============
+Pinterest Pins Grabber
+======================
 
 ## What is it
 
-There’s no external API for Pinterest. Here’s a purely academic project that I wrote back in the summer of 2014 using Node to make something like an API for Pinterest (leveraging the public pages on the Pinterest website). Currently it only loads pins given a user. It is a great way to backup your own pins. **Do not use this against the Pinterest terms of service.**
+This is something I wrote back in the summer of 2014 when Pinterest had no public API for grabbing a user’s public pins. It’s built with NodeJS and leverages the public data on the Pinterest website. It is a great way to backup your own pins, but probably mostly serves as an example of building a scraper. **Do not use this against the Pinterest terms of service.**
 
 The relevant files are:
 

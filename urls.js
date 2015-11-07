@@ -33,6 +33,7 @@ function getHeaders(isAjax, extraHeaders) {
     return headers;
 }
 
+
 function requestGzip(options, callback) {
     // `encoding: null` is required for gzip decoding?!?!
     // https://github.com/mikeal/request/issues/747
@@ -59,6 +60,7 @@ function requestGzip(options, callback) {
     });
 }
 
+
 function getFirstPage(username, headers, fn) {
 
     // allow optional headers
@@ -79,6 +81,7 @@ function getFirstPage(username, headers, fn) {
         }
     });
 }
+
 
 function getPagination(username, bookmark, headers, fn) {
 

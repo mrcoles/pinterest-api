@@ -3,6 +3,7 @@
 var urls = require('./urls');
 var parser = require('./parser');
 
+
 var EventMap = function EventMap() {
     var self = this;
     var map = {};
